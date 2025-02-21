@@ -12,7 +12,7 @@ import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 
-@Path("/store/order")
+@Path("/v2/store/order")
 public class StoreApi extends AbsService<StoreApi, StoreDTO> {
 
   public StoreDTO createStoreDTO(Long petID) {

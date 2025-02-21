@@ -7,7 +7,7 @@ import dto.Tag;
 import java.util.ArrayList;
 import java.util.List;
 
-@Path("/pet")
+@Path("/v2/pet")
 public class PetStoreApi extends AbsService<PetStoreApi, PetDTO> {
 
   public PetDTO createPetDTO() {

@@ -3,12 +3,9 @@ package services;
 import static io.restassured.RestAssured.given;
 
 import annotaitions.Path;
-import exceptions.PathDTOException;
 import io.restassured.http.Method;
 
 public abstract class AbsService<T, V> {
-  private String baseURL = System.getProperty("base.url");
-
   public String pathUser(String pathVar) {
     return "/" + pathVar;
   }
@@ -22,14 +19,6 @@ public abstract class AbsService<T, V> {
     else {
       return "";
     }
-  }
-
-  public String getFullPath() {
-    String path = getPath();
-    if (path.isEmpty()) {
-      throw new PathDTOException();
-    }
-    return baseURL + path;
   }
 
   public V createByMethodPost(V dto, Class<V> dtoClass) {
@@ -50,6 +39,4 @@ public abstract class AbsService<T, V> {
         .log().all()
         .extract().as(responseClass);
   }
-
-
 }

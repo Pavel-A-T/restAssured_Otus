@@ -6,7 +6,7 @@ import annotaitions.Path;
 import dto.UserDTO;
 import dto.SuccessResponseDTO;
 
-@Path("/user")
+@Path("/v2/user")
 public class UserApi extends AbsService<UserApi, UserDTO> {
 
   public UserDTO createUserDTO() {
