@@ -22,7 +22,7 @@ public class StoreApi extends AbsService<StoreApi, StoreDTO> {
     String dateTime = DateTimeFormatter.ISO_INSTANT.format(instant);
 
     Integer quantity = 2;
-    Long id = 145897L;
+    Long id = 8L;
     String status = "placed";
     Boolean complete = true;
 

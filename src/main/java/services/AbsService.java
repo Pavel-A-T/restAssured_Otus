@@ -4,6 +4,7 @@ import static io.restassured.RestAssured.given;
 
 import annotaitions.Path;
 import io.restassured.http.Method;
+import io.restassured.response.Response;
 
 public abstract class AbsService<T, V> {
   public String pathUser(String pathVar) {
@@ -31,12 +32,19 @@ public abstract class AbsService<T, V> {
         .extract().as(dtoClass);
   }
 
-  public V requestByMethod(String path, Method method, Class<V> responseClass) {
-    return given()
+  public <V> V requestByMethod(String path, Method method, Class<V> responseClass) {
+    Response response = given()
+        .relaxedHTTPSValidation()
         .when()
         .request(method, getPath() + path)
         .then()
         .log().all()
-        .extract().as(responseClass);
+        .extract()
+        .response();
+    if (response.getStatusCode() == 200) {
+      return response.as(responseClass);
+    } else {
+      return null;
+    }
   }
 }
